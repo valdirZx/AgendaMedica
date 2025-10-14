@@ -1,0 +1,105 @@
+﻿@page
+@model RegisterModel
+
+@{
+    ViewData["Title"] = "Registrar";
+}
+
+<div class="container-fluid p-0 rounded-3">
+    <div class="d-flex flex-column flex-md-row min-vh-100 rounded-3">
+
+        <!-- Formulário primeiro (esquerda em telas grandes) -->
+        <div class="col-md-6 d-flex align-items-center justify-content-center bg-white p-4 p-md-5 shadow-sm">
+            <div class="login-form w-100" style="max-width: 380px;">
+                <h2 class="fw-bold text-dark mb-1">Crie sua conta</h2>
+                <small class="text-success">Preencha os dados para se cadastrar...</small>
+
+                <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="mt-4">
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                    <div class="form-floating mb-3 border border-dark rounded-3">
+                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                        <label asp-for="Input.Email">Email</label>
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3 border border-dark rounded-3">
+                        <input asp-for="Input.Password" type="password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Senha" />
+                        <label asp-for="Input.Password">Senha</label>
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3 border border-dark rounded-3">
+                        <input asp-for="Input.ConfirmPassword" type="password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Confirmar Senha" />
+                        <label asp-for="Input.ConfirmPassword">Confirmar Senha</label>
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+                    <button id="registerSubmit" type="submit" class="btn btn-success w-100 py-2 fw-semibold">
+                        Cadastrar
+                    </button>
+
+                    <div class="text-center mt-3 small">
+                        Já tem uma conta?
+                        <a asp-page="./Login" class="text-primary fw-semibold text-decoration-none">Entrar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Imagem agora à direita -->
+        <div class="col-md-6 d-none d-md-flex align-items-end text-white position-relative login-left">
+            <div class="position-absolute top-0 start-0 w-100 h-100 bg-success bg-opacity-10"></div>
+            <div class="login-left-content position-relative p-5">
+        </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f5f8fb;
+    }
+
+    .login-left {
+        position: relative;
+        background: url('/img/cirurgião.png') no-repeat center center;
+        background-size: cover;
+    }
+
+        /* camada verde translúcida por cima */
+        .login-left::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(140, 200, 190, 0.4); /* verde claro translúcido */
+            z-index: 1;
+        }
+
+    .login-left-content {
+        position: relative;
+        z-index: 2;
+        color: white;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-control {
+        border-radius: 10px !important;
+    }
+
+    .btn-success {
+        background-color: #198754;
+        border-color: #198754;
+    }
+
+        .btn-success:hover {
+            background-color: #157347;
+            border-color: #157347;
+        }
+</style>

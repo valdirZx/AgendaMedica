@@ -1,0 +1,119 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container-fluid p-0">
+    <div class="d-flex flex-column flex-md-row min-vh-100">
+        <!-- Lado esquerdo -->
+        <div class="col-md-6 d-none d-md-flex align-items-end text-white position-relative login-left">
+            <div class="position-absolute top-0 start-0 w-100 h-100 rounded-end"></div>
+            <div class="login-left-content position-relative p-5">
+            </div>
+        </div>
+
+        <!-- Lado direito -->
+        <div class="col-md-6 d-flex align-items-center justify-content-center bg-white p-4 p-md-5 shadow-sm box-shadow">
+            <div class="login-form w-100" style="max-width: 380px;">
+                <h2 class="fw-bold text-dark mb-1">Seja bem-vindo!</h2>
+                <small class="text-dark">Entre para acessar sua agenda médica</small>
+
+                <form id="account" method="post" class="mt-4">
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                    <div class="form-floating mb-3 border border-dark rounded-3">
+                        <input asp-for="Input.Email" class="form-control" placeholder="name@example.com" />
+                        <label asp-for="Input.Email">Email</label>
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3 border border-dark rounded-3">
+                        <input asp-for="Input.Password" type="password" class="form-control" placeholder="Senha" />
+                        <label asp-for="Input.Password">Senha</label>
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" asp-for="Input.RememberMe" />
+                            <label class="form-check-label text-dark" asp-for="Input.RememberMe">
+                                Lembrar-me
+                            </label>
+                        </div>
+                        <a asp-page="./ForgotPassword" class="text-primary small text-decoration-none">Esqueceu a senha?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">
+                        Entrar
+                    </button>
+
+                    <div class="text-center mt-3 small">
+                        Não tem uma conta?
+                        <a asp-page="./Register" class="text-primary fw-semibold text-decoration-none">Cadastre-se</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+</div>
+
+<style>
+    .login-container {
+        display: flex;
+        min-height: 100vh;
+    }
+
+    .login-left {
+        flex: 1;
+        background-size: cover;
+        position: relative;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 60px;
+    }
+
+        .login-left::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+        }
+
+    .login-left-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .login-left h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+
+    .login-right {
+        flex: 1;
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 60px;
+        box-shadow: -5px 0 25px rgba(0,0,0,0.05);
+    }
+
+
+    .login-left {
+        background-image: url('/img/medico-hematologista-telemedicina-morsch.jpg');
+        
+    }
+
+</style>
