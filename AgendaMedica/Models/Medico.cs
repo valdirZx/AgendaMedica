@@ -13,6 +13,6 @@
 
         public Guid EspecialidadeId { get; set; } 
 
-        public Especialidade Especialidade { get; set; }
+        public Especialidade? Especialidade { get; set; }
     }
 }

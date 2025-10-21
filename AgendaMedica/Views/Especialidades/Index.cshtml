@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AgendaMedica.Models.Especialidade>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container text-success mt-5">
+    <h1 class="text-center display-5">Cadastro de Es<span class="fw-bold">pecialida</span>des</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-success btn-lg">Adicionar Especialidade</a>
+</p>
+    <table class="table table-dark table-striped table-borderless">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.EspecialidadeId"
+                           class="btn btn-sm btn-light me-2 d-inline-flex align-items-center">
+                            Editar
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.EspecialidadeId"
+                           class="btn btn-sm btn-light d-inline-flex align-items-center">
+                            Deletar
+                        </a>
+                    </td>
+        </tr>
+}
+    </tbody>
+</table>
